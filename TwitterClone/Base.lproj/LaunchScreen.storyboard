@@ -16,8 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter_logo_blue" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-Na-eEH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TwitterLogo" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-Na-eEH">
                                 <rect key="frame" x="121.66666666666669" y="351" width="150" height="150"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="4Bl-MH-qk3"/>
                                     <constraint firstAttribute="height" constant="150" id="bPN-Mj-WFa"/>
@@ -25,7 +26,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.11372549019607843" green="0.63137254901960782" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CJd-Na-eEH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lkP-6F-ZuT"/>
                             <constraint firstItem="CJd-Na-eEH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uFq-5A-UeZ"/>
@@ -38,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="twitter_logo_blue" width="400" height="400"/>
+        <image name="TwitterLogo" width="300" height="300"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

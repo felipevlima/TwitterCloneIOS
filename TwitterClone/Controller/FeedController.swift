@@ -24,13 +24,12 @@ class FeedController: UICollectionViewController {
         }
     }
     
-    
     private let refreshControl = UIRefreshControl()
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationController?.navigationBar.isHidden = false
         configureUI()
         fetchTweets()
     }
