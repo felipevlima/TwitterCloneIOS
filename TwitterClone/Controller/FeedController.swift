@@ -49,7 +49,7 @@ class FeedController: UICollectionViewController {
 
     // MARK: - Helpers
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         collectionView.register(TweetCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
@@ -75,7 +75,7 @@ class FeedController: UICollectionViewController {
     func configureNavigationBarToOldStyle() {
         let apperanceNavBar = UINavigationBarAppearance()
         apperanceNavBar.configureWithOpaqueBackground()
-        apperanceNavBar.backgroundColor = .white
+        apperanceNavBar.backgroundColor = .systemBackground
         
         navigationController?.navigationBar.standardAppearance = apperanceNavBar
         navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
