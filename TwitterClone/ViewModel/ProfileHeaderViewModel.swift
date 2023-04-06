@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 enum ProfileFilterOptions: Int, CaseIterable {
     case tweets
@@ -25,6 +26,8 @@ enum ProfileFilterOptions: Int, CaseIterable {
 struct ProfileHeaderViewModel {
     private let user: User
     
+    let usernameText: String
+    
     var followersString: NSAttributedString? {
         return attributedText(withValue: 0, text: "following")
     }
@@ -33,8 +36,17 @@ struct ProfileHeaderViewModel {
         return attributedText(withValue: 10, text: "followers")
     }
     
+    var actionButtonTitle: String {
+        if user.isCurrentUser {
+            return "Edit Profile"
+        } else {
+            return "Follow"
+        }
+    }
+    
     init(user: User) {
         self.user = user
+        self.usernameText = "@" + user.username
     }
     
     func attributedText(withValue value: Int, text: String) -> NSAttributedString {

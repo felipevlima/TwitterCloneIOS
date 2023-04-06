@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import FirebaseAuth
 
 private let reuseIdentifier = "TweetCell"
 
@@ -36,13 +37,14 @@ class FeedController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - API
     func fetchTweets() {
         TweetService.shared.fetchTweets { tweets in
-            self.tweets = tweets.reversed()
+            self.tweets = tweets
         }
     }
 
@@ -62,7 +64,7 @@ class FeedController: UICollectionViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.refreshControl = refreshControl
         
-//        configureTabBarToOldStyle()
+        configureTabBarToOldStyle()
         configureNavigationBarToOldStyle()
     }
     
@@ -83,7 +85,7 @@ class FeedController: UICollectionViewController {
     func configureTabBarToOldStyle() {
         let apperanceTabBar = UITabBarAppearance()
         apperanceTabBar.configureWithOpaqueBackground()
-        apperanceTabBar.backgroundColor = .white
+        apperanceTabBar.backgroundColor = .systemBackground
         Utilities().setTabBarItemColors(apperanceTabBar.stackedLayoutAppearance)
         tabBarController?.tabBar.standardAppearance = apperanceTabBar
         tabBarController?.tabBar.scrollEdgeAppearance = tabBarController?.tabBar.standardAppearance
@@ -96,12 +98,35 @@ class FeedController: UICollectionViewController {
         profileImageView.setDimensions(width: 32, height: 32)
         profileImageView.layer.cornerRadius = 32 / 2
         profileImageView.layer.masksToBounds = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(logUserOut))
+        profileImageView.addGestureRecognizer(tap)
         
         profileImageView.sd_setImage(with: user.profileImageUrl)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
     }
     
+    @objc private func handleLeftBarButton() {
+        guard let user = user else { return }
+        let controller = ProfileController(user: user)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func logUserOut() {
+        do {
+            try Auth.auth().signOut()
+            self.backToLoginScreen()
+        } catch let error {
+            print("DEBUG: Failed to sign out with error \(error.localizedDescription)")
+        }
+    }
+    
+    
+    func backToLoginScreen() {
+        let nav = UINavigationController(rootViewController: LoginController())
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true)
+    }
 
 }
 
@@ -120,6 +145,8 @@ extension FeedController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let controller = ProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+//        guard let user = user else { return }
+//        let controller  = ProfileController(user: user)
 //        navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -135,9 +162,11 @@ extension FeedController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Delegate
 extension FeedController: TweetCellDelegate {
-    func handleProfileImageTapped() {
+    func handleProfileImageTapped(_ cell: TweetCell) {
 //        print("DEBUG: Handle Profile Tapped")
-        let controller = ProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        guard let user = cell.tweet?.user else { return }
+        let controller = ProfileController(user: user)
+
         navigationController?.pushViewController(controller, animated: true)
     }
 }

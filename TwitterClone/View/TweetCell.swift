@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 protocol TweetCellDelegate: AnyObject {
-    func handleProfileImageTapped()
+    func handleProfileImageTapped(_ cell: TweetCell)
 }
 
 class TweetCell: UICollectionViewCell {
@@ -88,7 +88,7 @@ class TweetCell: UICollectionViewCell {
     
     private let countLikeLabel: UILabel = {
         let label = UILabel()
-        label.text = "10"
+//        label.text = ""
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         return label
@@ -96,7 +96,7 @@ class TweetCell: UICollectionViewCell {
     
     private let commentCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "3"
+//        label.text = "3"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         return label
@@ -104,7 +104,7 @@ class TweetCell: UICollectionViewCell {
     
     private let retweetCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "1"
+//        label.text = "1"
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         return label
@@ -167,7 +167,7 @@ class TweetCell: UICollectionViewCell {
     // MARK: - Selectors
     @objc func handleProfileImageTapped() {
 //        print("DEBUG: image profile")
-        delegate?.handleProfileImageTapped()
+        delegate?.handleProfileImageTapped(self)
     }
     
     @objc func handleCommentTapped() {
@@ -201,6 +201,8 @@ class TweetCell: UICollectionViewCell {
         
         let viewModel = TweetViewModel(tweet: tweet)
         captionLabel.text = tweet.caption
+        countLikeLabel.text = "\(tweet.likes)"
+        retweetCountLabel.text = "\(tweet.retweetCount)"
         profileImageView.sd_setImage(with: viewModel.profileImageURL)
         infoLabel.attributedText = viewModel.userInfoText
     }

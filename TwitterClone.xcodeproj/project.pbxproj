@@ -95,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB68E30B29DE5A96004A2170 /* Splashscreen */ = {
+			isa = PBXGroup;
+			children = (
+				E300E89D29DE14D500DDAA48 /* SplashViewController.swift */,
+			);
+			path = Splashscreen;
+			sourceTree = "<group>";
+		};
 		E39ADF3829D35E710009B022 = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +151,7 @@
 		E39ADF5929D35ECC0009B022 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DB68E30B29DE5A96004A2170 /* Splashscreen */,
 				E39ADF6A29D38B900009B022 /* Authentication */,
 				E39ADF5E29D35F7D0009B022 /* MainTabController.swift */,
 				E39ADF6029D361DB0009B022 /* FeedController.swift */,
@@ -151,7 +160,6 @@
 				E39ADF6629D3627C0009B022 /* ConversationsController.swift */,
 				E32D1F9929D6686100F20CD1 /* UploadTweetController.swift */,
 				E32D1FA529D7B92300F20CD1 /* ProfileController.swift */,
-				E300E89D29DE14D500DDAA48 /* SplashViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

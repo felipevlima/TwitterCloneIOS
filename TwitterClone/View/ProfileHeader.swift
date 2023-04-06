@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol ProfileHeaderDelegate: AnyObject {
     func handleDismissAll()
@@ -62,7 +63,6 @@ class ProfileHeader: UICollectionReusableView {
     private let fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Eddie Brock"
         return label
     }()
     
@@ -70,7 +70,6 @@ class ProfileHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .lightGray
-        label.text = "@venon"
         return label
     }()
     
@@ -173,8 +172,13 @@ class ProfileHeader: UICollectionReusableView {
         guard let user = user else { return }
         let viewModel = ProfileHeaderViewModel(user: user)
         
+        profileImageView.sd_setImage(with: user.profileImageUrl)
+        editProfileFollowButton.setTitle(viewModel.actionButtonTitle, for: .normal)
         followingLabel.attributedText = viewModel.followingString
         followersLabel.attributedText = viewModel.followersString
+        
+        fullnameLabel.text = user.fullname
+        usernameLabel.text = viewModel.usernameText
     }
 }
 

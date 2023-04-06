@@ -124,9 +124,19 @@ class RegistrationController: UIViewController {
         let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
         
         AuthService.shared.register(credentials: credentials) { (error, ref) in
+
+//            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//                  let window = windowScene.windows.first(where: { $0.isKeyWindow }),
+//                  let tab = window.rootViewController as? MainTabController else {
+//                return
+//            }
+            
             guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
             guard let tab = window.rootViewController as? MainTabController else { return  }
+
+                    
             
+//            print("chegou aqui 2")
             tab.authenticationUserAndConfigureUI()
             sender.isLoading = false
             self.dismiss(animated: true)
