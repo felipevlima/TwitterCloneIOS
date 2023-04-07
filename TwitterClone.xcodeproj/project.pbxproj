@@ -42,6 +42,9 @@
 		E39ADF6C29D38BA70009B022 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39ADF6B29D38BA70009B022 /* LoginController.swift */; };
 		E39ADF6E29D3BC1B0009B022 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39ADF6D29D3BC1B0009B022 /* RegistrationController.swift */; };
 		E39ADF7029D3C7350009B022 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39ADF6F29D3C7350009B022 /* Utilities.swift */; };
+		E3F480FB29DF97FA0058FDB6 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F480FA29DF97FA0058FDB6 /* UserCell.swift */; };
+		E3F480FD29DFB3C60058FDB6 /* TweetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F480FC29DFB3C60058FDB6 /* TweetController.swift */; };
+		E3F480FF29DFB6110058FDB6 /* TweetHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F480FE29DFB6110058FDB6 /* TweetHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +81,9 @@
 		E39ADF6B29D38BA70009B022 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		E39ADF6D29D3BC1B0009B022 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		E39ADF6F29D3C7350009B022 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		E3F480FA29DF97FA0058FDB6 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		E3F480FC29DFB3C60058FDB6 /* TweetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetController.swift; sourceTree = "<group>"; };
+		E3F480FE29DFB6110058FDB6 /* TweetHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,7 @@
 				E39ADF6629D3627C0009B022 /* ConversationsController.swift */,
 				E32D1F9929D6686100F20CD1 /* UploadTweetController.swift */,
 				E32D1FA529D7B92300F20CD1 /* ProfileController.swift */,
+				E3F480FC29DFB3C60058FDB6 /* TweetController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,6 +189,8 @@
 				E32D1FA729D7C61300F20CD1 /* ProfileHeader.swift */,
 				E32D1FA929D7DE7A00F20CD1 /* ProfileFilterView.swift */,
 				E32D1FAB29D7E04200F20CD1 /* ProfileFilterCell.swift */,
+				E3F480FA29DF97FA0058FDB6 /* UserCell.swift */,
+				E3F480FE29DFB6110058FDB6 /* TweetHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -311,18 +320,21 @@
 				E39ADF4529D35E710009B022 /* AppDelegate.swift in Sources */,
 				E39ADF6929D374970009B022 /* Extensions.swift in Sources */,
 				E32D1FA029D7765400F20CD1 /* Tweet.swift in Sources */,
+				E3F480FB29DF97FA0058FDB6 /* UserCell.swift in Sources */,
 				E32D1FAC29D7E04200F20CD1 /* ProfileFilterCell.swift in Sources */,
 				E32D1FA429D7874000F20CD1 /* TweetViewModel.swift in Sources */,
 				E39ADF6C29D38BA70009B022 /* LoginController.swift in Sources */,
 				E300E89E29DE14D500DDAA48 /* SplashViewController.swift in Sources */,
 				E32D1F8F29D507D900F20CD1 /* AuthService.swift in Sources */,
 				E39ADF6329D3625B0009B022 /* ExploreController.swift in Sources */,
+				E3F480FF29DFB6110058FDB6 /* TweetHeader.swift in Sources */,
 				E32D1FA229D77C2500F20CD1 /* TweetCell.swift in Sources */,
 				E39ADF4729D35E710009B022 /* SceneDelegate.swift in Sources */,
 				E39ADF5F29D35F7D0009B022 /* MainTabController.swift in Sources */,
 				E39ADF6E29D3BC1B0009B022 /* RegistrationController.swift in Sources */,
 				E39ADF6129D361DB0009B022 /* FeedController.swift in Sources */,
 				E32D1F8D29D4AD0500F20CD1 /* Constants.swift in Sources */,
+				E3F480FD29DFB3C60058FDB6 /* TweetController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +476,7 @@
 				DEVELOPMENT_TEAM = Q8FTKQV35B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TwitterClone/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Twitter Beta";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -494,6 +507,7 @@
 				DEVELOPMENT_TEAM = Q8FTKQV35B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TwitterClone/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Twitter Beta";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

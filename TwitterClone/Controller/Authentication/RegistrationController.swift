@@ -95,10 +95,20 @@ class RegistrationController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
+        
+        emailTexField.delegate = self
+        passwordTextField.delegate = self
+        fullNameTexField.delegate = self
+        usernameTextField.delegate = self
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - Selectors
-    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     @objc private func handleShowLogin() {
         navigationController?.popViewController(animated: true)
     }
@@ -121,26 +131,16 @@ class RegistrationController: UIViewController {
               let fullname = fullNameTexField.text,
               let username = usernameTextField.text?.lowercased() else { return }
         
-        let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
-        
-        AuthService.shared.register(credentials: credentials) { (error, ref) in
-
-//            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//                  let window = windowScene.windows.first(where: { $0.isKeyWindow }),
-//                  let tab = window.rootViewController as? MainTabController else {
-//                return
-//            }
+            let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
             
+            AuthService.shared.register(credentials: credentials) { (error, ref) in
+                
             guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
             guard let tab = window.rootViewController as? MainTabController else { return  }
 
-                    
-            
-//            print("chegou aqui 2")
             tab.authenticationUserAndConfigureUI()
             sender.isLoading = false
             self.dismiss(animated: true)
-//            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -191,5 +191,12 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         
         self.plusPhotoButton.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension RegistrationController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.dismissKeyboard()
+        return true
     }
 }

@@ -78,12 +78,19 @@ class LoginController: UIViewController {
                 return
             }
             
-            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
-            guard let tab = window.rootViewController as? MainTabController else { return  }
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first(where: { $0.isKeyWindow}),
+               let tab = window.rootViewController as? MainTabController {
+                tab.authenticationUserAndConfigureUI()
+                sender.isLoading = false
+                self.dismiss(animated: true)
+            } else {
+                print("DEBUG: Failed")
+            }
+//            guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+//            guard let tab = window.rootViewController as? MainTabController else { return  }
             
-            tab.authenticationUserAndConfigureUI()
-            sender.isLoading = false
-            self.dismiss(animated: true)
+           
         }
 //        }
 //

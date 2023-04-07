@@ -20,10 +20,6 @@ class Button: UIButton {
         setupView()
     }
     
-//    init(title: String) {
-//        self.title = title
-//    }
-//
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -48,14 +44,23 @@ class Button: UIButton {
             spinner.startAnimating()
             titleLabel?.alpha = 0
             imageView?.alpha = 0
-            
+            titleLabel?.removeFromSuperview()
+            imageView?.removeFromSuperview()
             isEnabled = false
         } else {
             spinner.stopAnimating()
+            addTitleAndImage()
             titleLabel?.alpha = 1
             imageView?.alpha = 1
             
             isEnabled = true
+        }
+    }
+    
+    func addTitleAndImage() {
+        if let titleLabel = titleLabel, let imageView = imageView {
+            addSubview(titleLabel)
+            addSubview(imageView)
         }
     }
 }
