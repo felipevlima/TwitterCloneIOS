@@ -12,7 +12,6 @@ class RegistrationController: UIViewController {
     // MARK: - Properties
     private let imagePicker = UIImagePickerController()
     private var profileImage: UIImage?
-//    private let activeIndicator = UIActivityIndicatorView(style: .gray)
     
     private lazy var plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
